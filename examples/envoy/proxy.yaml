@@ -8,7 +8,7 @@ static_resources:
   clusters:
     - name: ratelimit
       type: STRICT_DNS
-      connect_timeout: 1s
+      connect_timeout: 10s
       lb_policy: ROUND_ROBIN
       protocol_selection: USE_CONFIGURED_PROTOCOL
       http2_protocol_options: {}
@@ -19,8 +19,8 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      address: ratelimit
-                      port_value: 8081
+                      address: host.docker.internal
+                      port_value: 3003
     - name: mock
       connect_timeout: 1s
       type: STRICT_DNS
